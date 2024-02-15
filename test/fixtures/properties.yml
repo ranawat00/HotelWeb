@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  no_bedrooms: 1
+  no_baths: 1
+  no_beds: 1
+  area: 1.5
+
+two:
+  name: MyString
+  description: MyText
+  no_bedrooms: 1
+  no_baths: 1
+  no_beds: 1
+  area: 1.5
