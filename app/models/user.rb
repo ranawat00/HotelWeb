@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :role, inclusion: {in:%w[user admin],message:"Role must be 'user' or 'admin"}
 
 
-  validates :password_digest ,presence:{message:"password can not be blank"},on: :create 
+  validates :password ,presence:{message:"password can not be blank"},on: :create 
   # validates :password_conformation_matches_password, on: :create
 
 
@@ -24,3 +24,5 @@ def admin
   role == "admin"
 end
 end
+
+
