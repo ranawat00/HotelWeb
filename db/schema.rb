@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2024_02_15_090340) do
-  create_table "addresses", force: :cascade do |t|
+  create_table "addresesses", force: :cascade do |t|
     t.string "house_no"
     t.string "street"
     t.string "city"
@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_090340) do
     t.integer "property_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["property_id"], name: "index_addresses_on_property_id"
+    t.index ["property_id"], name: "index_addresesses_on_property_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -65,7 +65,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_090340) do
     t.index ["property_id"], name: "index_reservation_criteria_on_property_id"
   end
 
-  create_table "reversations", force: :cascade do |t|
+  create_table "reservations", force: :cascade do |t|
     t.date "start_date"
     t.date "end_date"
     t.integer "guests"
@@ -74,8 +74,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_090340) do
     t.integer "property_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["property_id"], name: "index_reversations_on_property_id"
-    t.index ["user_id"], name: "index_reversations_on_user_id"
+    t.index ["property_id"], name: "index_reservations_on_property_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -88,11 +88,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_090340) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "addresses", "properties", on_delete: :cascade
+  add_foreign_key "addresesses", "properties", on_delete: :cascade
   add_foreign_key "images", "properties", on_delete: :cascade
   add_foreign_key "properties", "categories", on_delete: :cascade
   add_foreign_key "properties", "users", on_delete: :cascade
   add_foreign_key "reservation_criteria", "properties", on_delete: :cascade
-  add_foreign_key "reversations", "properties", on_delete: :cascade
-  add_foreign_key "reversations", "users", on_delete: :cascade
+  add_foreign_key "reservations", "properties", on_delete: :cascade
+  add_foreign_key "reservations", "users", on_delete: :cascade
 end

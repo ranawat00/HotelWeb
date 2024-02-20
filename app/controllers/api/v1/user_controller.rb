@@ -1,8 +1,5 @@
 class Api::V1::UserController < ApplicationController
-  # before_action :authenticate_user, except: :create
-  # load_and_authorize_resource
-  # rescue_from :ActiveRecord::RecordNotFound ,with: :user_not_found
-  # before_action :set_user , only: %i[show update destroy]
+  before_action :authenticate_user, only: :destroy
   skip_before_action :verify_authenticity_token, only: [:update, :destroy]  
 
   def index
@@ -23,10 +20,13 @@ class Api::V1::UserController < ApplicationController
   end
 
   def destroy
-    if @current_user.destroy
-      render json: [message: 'user deleted successfully'], status: :no_content
+    unless @current_user 
+      return render json: { message: "User Not Found" }, status: :not_found
+    end
+    if @current_user.delete
+      render json: { message: 'User deleted successfully' }, status: :ok
     else
-      render json: [message: 'error'], status: :no_content
+      render json: { message: 'User not deleted' }, status: :ok
     end
   end
 
@@ -45,3 +45,8 @@ class Api::V1::UserController < ApplicationController
   end
 
 end
+
+
+
+
+

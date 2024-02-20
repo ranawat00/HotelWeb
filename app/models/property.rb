@@ -1,10 +1,10 @@
 class Property < ApplicationRecord
   belongs_to :user
-  belong_to :category
-  has_many :images,dependent: :destory
+  belongs_to :category
+  has_many :images, dependent: :destroy
   has_one :address,dependent: :destroy
-  has_one :reservation_criteria,dependent: :destory
-  has_many :reservation,dependent: :destory
+  has_one :reservation_criteria,dependent: :destroy
+  has_many :reservations,dependent: :destroy
 
   validates :name,presence: true, length:{maximum: 250}
   validates :description, presence: true, length: {maximum: 1000}

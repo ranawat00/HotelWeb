@@ -1,4 +1,4 @@
-class Reversation < ApplicationRecord
+class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :property
 
@@ -6,12 +6,12 @@ class Reversation < ApplicationRecord
   validates :end_date, presence: true
   validates :guests,presence:true
 
-  validate :check_guest_capaicty
+  # validate :check_guest_capaicty
   validate :end_date_after_start_date
-  validate :start_date_smaller_then_today
-  validate :property_available_on_reservation_dates
+  # validate :start_date_smaller_then_today
+  # validate :property_available_on_reservation_dates
 
-  before_save :set_reservation_price
+  # before_save :set_reservation_price
 
 private  
 
@@ -22,12 +22,12 @@ end
 
 
 def check_guest_capaicty
-  property=property.find_by(id: property_id)
-  return unless property && guest >property.reservation_criteria_max_guest
+  property = Property.find_by(id: property_id)
+  return unless property && guests > property.reservation_criteria_max_guests
   errors.add(:max_guest ,'Guests number exceeded the maximum allowed guest')
 end
 
-def end_date_after_start_date
+def end_date_after_start_date 
   return if end_date.blank? || start_date.blank?
   return unless end_date<= start_date
   errors.add(:end_date,"End date must be after start date")

@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_many :property
-  has_many :reservation ,dependent: :destroy
+  has_many :properties, dependent: :destroy
+  has_many :reservations ,dependent: :destroy
   # validates :avatar, presence: true
   validates :name, presence: true, length: { maximum:50 }
   validates :email, presence: true,

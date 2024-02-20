@@ -9,7 +9,7 @@ class Ability
         can :create,User,id:user.id
         can :show,User,id:user.id
         can :update,User,id:user.id
-        can :destory,User,id:user.id
+        can :destroy,User,id:user.id
         
     end
   end
