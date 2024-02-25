@@ -1,14 +1,22 @@
-class Api::V1::UserController < ApplicationController
+class Api::V1::UsersController < ApplicationController
   before_action :authenticate_user, only: :destroy
   skip_before_action :verify_authenticity_token, only: [:update, :destroy]  
 
   def index
-    @user = User.all
-    render json: @user.as_json(except:[:password_digest])
+    @users = User.all
+    if @users.present?
+      render json: @users.as_json(except:[:password_digest]), status: :ok
+    else
+      render json: {error: "No users found"}, status: :not_found
+    end 
   end
 
   def show
-    render json: @user.as_json(except:[:password_digest])
+    if @user.present?
+    render json: @user.as_json(except:[:password_digest]), status: :ok
+    else 
+      render json: {error: "User not found"}, status: :not_found
+    end 
   end
 
   def update

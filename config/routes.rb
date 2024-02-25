@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       resources :properties, only: %i[index show create update  destroy]
       resources :reservations, only: %i[index show create update  destroy]
       resources :reservation_criterias, only: %i[index show create update  destroy]
-      resources :user, only: %i[show index update destroy]
+      resources :users, only: %i[show index update destroy]
       post 'auth/sign_in' ,to: 'authentication#sign_in'
       post 'auth/sign_up', to: 'authentication#sign_up'
     end
