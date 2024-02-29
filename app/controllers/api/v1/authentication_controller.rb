@@ -25,19 +25,6 @@ class Api::V1::AuthenticationController < ApplicationController
     end
   end
   
-
-  def current_user
-    @my_properties=property.where[user_id:@current_user.id]
-    @my_reservations=reservation.where[user_id:@current_user.id]
-    render json{ success:true,data:{
-                                    myproperties:@my_properties,myreservations:@my_reservations,include:%i[images]
-                                  } 
-                                },status: :ok
-  end
-
-  
-
-
   def sign_up
     @user = User.new(user_params)
     @user.role = 'user' # Set the role directly, no need to modify params
@@ -50,6 +37,18 @@ class Api::V1::AuthenticationController < ApplicationController
       render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
   end
+
+  def current_user
+    @my_properties=property.where[user_id:@current_user.id]
+    @my_reservations=reservation.where[user_id:@current_user.id]
+    render json{ success:true,data:{
+                                    myproperties:@my_properties,myreservations:@my_reservations,include:%i[images]
+                                  } 
+                                },status: :ok
+  end
+
+ 
+ 
   
   
   private

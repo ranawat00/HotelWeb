@@ -19,6 +19,19 @@ class Api::V1::UsersController < ApplicationController
     end 
   end
 
+  # def create
+  #   @user = User.new(user_params)
+  #   @user.role = 'user' # Set the role directly, no need to modify params
+  #   @user.avatar = 'avatar' # Assuming you have a default avatar
+    
+  #   if @user.save
+  #     token = JsonWebToken.encode(user_id: @user.id)
+  #     render json: { token: token, user_details: @user.as_json(except: [:password_digest]) }, status: :created
+  #   else
+  #     render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+  #   end
+  # end
+
   def update
     if @current_user.update(user_params)
       render json: { message: "User information updated successfully", user: @current_user }
