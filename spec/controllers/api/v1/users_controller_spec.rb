@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Api::V1::UsersControllers', type: :request do
+RSpec.describe 'Api::V1::UsersControllers', type: :controller do
 
   describe "GET#index" do
     context 'when users present' do 
