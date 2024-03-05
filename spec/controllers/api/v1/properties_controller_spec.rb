@@ -9,7 +9,7 @@ RSpec.describe API::V1::propertiesController do, type: :controller do
     @user2=User.create!(name:Faker::Name.name, eamil:Faker::Internet.email,password:'password',
                         password_confirmation: 'password',avatar:Faker::LoremFlicker.image)   
                         
-    @category = Category.create!(name: Faker::Lorem.word)
+    @category1 = Category.create!(name: Faker::Lorem.word)
     @category2 = Category.create!(name: Faker:: Lorem.word) 
     
     @property1 = Property.create!(name:Faker::Lorem.word, description: Faker::Lorem.sentence, no_bedroom:2,

@@ -8,7 +8,7 @@ Rspec.describe Api::V1::ReservationController, type: :controller do
     Reservation.delete_all
     @user1 = User.create!(name: Faker::Name.name, email: Faker::Internet.email, password: 'Password'
                         password_confirmation: 'password',avatar:Faker::LoremFlicker.image)
-    @category = Category.create!(name: Faker::Lorem.word)
+    @category1 = Category.create!(name: Faker::Lorem.word)
     @property1 = Property.create!(name: Faker::Lorem.word,description:Faker::Lorem.sentence,no_bedrooms:2
                                 ,no_baths:2,no_beds:2,area: 100.0,user:@user1 ,category: @category) 
     @criteria = ReservationCriteria.create! (time_period:'weekly', other_fee:100,rate:10,min_time_period:3, max_guest:10, property:@property1) 
